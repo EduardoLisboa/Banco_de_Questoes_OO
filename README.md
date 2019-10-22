@@ -27,6 +27,6 @@ Func. | Título           | Breve Descrição
 7 | Exibir questões | Qualquer usuário pode exibir todas as questões cadastradas, mas as respostas deverão aparecer apenas para os professores. As questões podem ser exibidas por matéria, por palavra-chave ou todas de uma vez.
 8 | Gerar prova | Um professor pode gerar uma prova, entrando as matérias e o número de questões de cada matéria. Deverão ser retornados dois arquivos, um com as questões em ordem aleatória, assim como suas respectivas alternativas, e outro com as respostas, na mesma ordem que as questões da prova.
 9 | Gerar simulado | Um aluno pode gerar um simulado, entrando as matérias e o número de questões de cada matéria. Esse simulado deverá ser respondido no próprio sistema, sendo as questões em ordem aleatória, assim como suas respectivas alternativas. Ao final do simulado, deverá ser apresentado o percentual de acerto e as respostas corretas de todas as questões.
-10 | Acesso ao sistema. | Alunos e professores poderão acessar o sistema através de login e senha escolhidos no momento do cadastro, sendo exibidas apenas suas opções permitidas
+10 | Acesso ao sistema | Alunos e professores poderão acessar o sistema através de login e senha escolhidos no momento do cadastro, sendo exibidas apenas suas opções permitidas.
 
 
