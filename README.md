@@ -11,7 +11,7 @@ O objetivo do projeto é construir um sistema de banco de questões.
 
 O sistema consiste de um banco de dados contendo diversas questões nível Enem além de seus dados associados, como matéria à qual a questão pertence e palavras-chave. O banco de questões deverá ter um cadastro de professores e alunos, assim como um sistema de login com opções específicas de cada um.
 
-- Os professores podem visualizar todas as questões, assim como cadastrar e remover questões do banco, podendo também gerar provas com um número pré-selecionado de questões de um número pré-selecionado de matérias (ex.: 3 matérias de biologia e 5 de física), recebendo dois arquivos, um com as questões e suas alternativas sendo ambas em ordem aleatória e outro com as respostas, na mesma ordem das questões.
+- Os professores podem visualizar todas as questões, assim como cadastrar e remover questões do banco, podendo também gerar provas com um número pré-selecionado de questões de um número pré-selecionado de matérias (ex.: 3 questões de biologia e 5 de física), recebendo dois arquivos, um com as questões e suas alternativas sendo ambas em ordem aleatória e outro com as respostas, na mesma ordem das questões.
 
 - Os alunos podem visualizar todas as questões, mas não podem ver as respostas. Alunos só podem ser cadastrados no sistema por um professor. Eles podem também gerar simulados que serão gerados semelhante à prova, porém devem ser respondidos no próprio sistema e as respostas só devem ser exibidas no final, junto com o percentual de acerto.
 
