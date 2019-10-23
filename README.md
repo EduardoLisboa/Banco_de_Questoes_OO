@@ -16,7 +16,7 @@ O sistema consiste de um banco de dados contendo diversas questões nível Enem 
 - Os alunos podem visualizar todas as questões, mas não podem ver as respostas. Alunos só podem ser cadastrados no sistema por um professor. Eles podem também gerar simulados que serão gerados semelhante à prova, porém devem ser respondidos no próprio sistema e as respostas só devem ser exibidas no final, junto com o percentual de acerto.
 
 
-Func. | Título           | Breve Descrição
+Func. | Título da funcionalidade | Breve Descrição
 :------:|:--------|:-----------------
 1 | Adicionar um professor | Um novo professor é adicionado ao sistema. Os seguintes atributos são fornecidos: Nome completo, Instituição de Ensino à qual o professor pertence, login e a senha de acesso ao sistema (a senha poderá ser alterada pelo professor posteriormente). Um código único para o professor deverá ser gerado automaticamente pelo sistema.
 2 | Remover um professor | O próprio professor poderá remover seu cadastro do sistema.
