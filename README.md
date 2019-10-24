@@ -18,9 +18,9 @@ O sistema consiste de um banco de dados contendo diversas questões nível Enem 
 
 Func. | Título da funcionalidade | Breve Descrição
 :------:|:--------|:-----------------
-1 | Adicionar um professor | Um novo professor é adicionado ao sistema. Os seguintes atributos são fornecidos: Nome completo, Instituição de Ensino à qual o professor pertence, login e a senha de acesso ao sistema (a senha poderá ser alterada pelo professor posteriormente). Um código único para o professor deverá ser gerado automaticamente pelo sistema.
+1 | Adicionar um professor | Um novo professor é adicionado ao sistema. Os seguintes atributos são fornecidos: Nome completo, Instituição de Ensino à qual o professor pertence, matéria que leciona, login e a senha de acesso ao sistema (a senha poderá ser alterada pelo professor posteriormente). Um código único para o professor deverá ser gerado automaticamente pelo sistema.
 2 | Remover um professor | O próprio professor poderá remover seu cadastro do sistema.
-3 | Adicionar um aluno | Um novo aluno é adicionado ao sistema somente por um professor, ficando o cadastro do aluno atrelado ao do professor. Os seguintes atributos são fornecidos: Nome completo, Instituição de Ensino do aluno, login e senha de acesso (a senha poderá ser alterada pelo aluno posteriormente). O sistema também deverá gerar um código único para o aluno automaticamente.
+3 | Adicionar um aluno | Um novo aluno é adicionado ao sistema somente por um professor, ficando o cadastro do aluno atrelado ao do professor. Os seguintes atributos são fornecidos: Nome completo, Instituição de Ensino do aluno, idade, login e senha de acesso (a senha poderá ser alterada pelo aluno posteriormente). O sistema também deverá gerar um código único para o aluno automaticamente.
 4 | Remover um aluno | O professor ao qual o aluno está atrelado pode removê-lo do sistema.
 5 | Adicionar uma questão | Um professor pode adicionar uma nova questão ao banco. Os seguintes atributos são fornecidos: Matéria, Palavra-chave (referente ao assunto da questão), texto da questão e uma resposta correta e quatro alternativas erradas.
 6 | Remover uma questão | Um professor pode remover uma questão do sistema.
