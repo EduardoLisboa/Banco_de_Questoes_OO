@@ -29,4 +29,14 @@ Func. | Título da funcionalidade | Breve Descrição
 9 | Gerar simulado | Um aluno pode gerar um simulado, entrando as matérias e o número de questões de cada matéria. Esse simulado deverá ser respondido no próprio sistema, sendo as questões em ordem aleatória, assim como suas respectivas alternativas. Ao final do simulado, deverá ser apresentado o percentual de acerto e as respostas corretas de todas as questões.
 10 | Acesso ao sistema | Alunos e professores poderão acessar o sistema através de login e senha escolhidos no momento do cadastro, sendo exibidas apenas suas opções permitidas.
 
-
+### TASKLIST
+- [X] ACESSO DO SISTEMA
+- [ ] ADICIONAR PROFESSOR
+- [ ] REMOVER PROFESSOR
+- [ ] ADICIONAR ALUNO
+- [ ] REMOVER ALUNO
+- [ ] ADICIONAR QUESTÃO
+- [ ] REMOVER QUESTÃO
+- [ ] EXIBIR QUESTÕES
+- [ ] GERAR PROVA
+- [ ] GERAR SIMULADO
