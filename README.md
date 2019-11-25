@@ -4,6 +4,8 @@
 
 **Projeto em Python com OO para a disciplina de Projeto de Software.**
 
+Para rodar o programa: `python main.py`
+
 
 # Sistema Banco de Questões
 
