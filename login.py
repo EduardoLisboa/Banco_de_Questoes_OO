@@ -2,7 +2,9 @@ from getpass import getpass
 from os import system
 from hashing import hashing
 from usuarios import Usuario
+from questoes import Questao, atualizar_questoes
 from banco_de_questoes import banco_de_questoes, limpar_tela
+
 
 usuarios_dict = dict()
 def ler_usuarios():
@@ -16,6 +18,7 @@ def login():
     while(True):
         limpar_tela()
         ler_usuarios()
+        atualizar_questoes()
         try:
             login = str(input('Login: '))
             senha = getpass(prompt='Senha: ')

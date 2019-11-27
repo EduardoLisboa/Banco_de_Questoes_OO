@@ -1,24 +1,39 @@
 class Questao():
     questoes = []
     quantidade_questoes = 0
+    indice_questoes = 0
+    materias = []
 
-    def __init__(self, materia, palavra_chave, texto, resposta, alternativas, id_professor):
+    def __init__(self, materia, palavra_chave, texto, resposta, alternativas, id_professor, id_questao, ativa):
         self.materia = materia
         self.palavra_chave = palavra_chave
         self.texto = texto
         self.resposta = resposta
         self.alternativas = alternativas
         self.id_professor = id_professor
+        self.id_questao = id_questao
+        self.ativa = ativa
 
-'''
-nova_questao = Questao('biologia', 'Células', 'Qual a fonte de energia das células?', 'Mitocôndria', ['Mitocôndria', 'Ribossomos', 'Lisossomos', 'Queratina', 'Lombriga'], 1)
-Questao.quantidade_questoes += 1
-Questao.questoes.append(nova_questao)
-
-nova_questao = Questao('Inglês', 'Verbo to be', 'Como falar "Eu sou" em inglês?', 'I am', ['I am', 'You are', 'He is', 'I is', 'We am'], 1)
-Questao.quantidade_questoes += 1
-Questao.questoes.append(nova_questao)
-'''
 
 def atualizar_questoes():
-    pass
+    if Questao.quantidade_questoes > 0: return
+    aux_questao = []
+    cont = 0
+    for linha in open('questoes.txt', 'r', encoding='utf-8'):
+        if 0 <= cont < 9:
+            aux_questao.append(linha.replace('\n', ''))
+        elif cont >= 9:
+            nova_questao = Questao(aux_questao[0], aux_questao[1], aux_questao[2], aux_questao[3], aux_questao[4:9], 1, Questao.indice_questoes, True)
+            Questao.questoes.append(nova_questao)
+            Questao.quantidade_questoes += 1
+            Questao.indice_questoes += 1
+            if nova_questao.materia not in Questao.materias: Questao.materias.append(nova_questao.materia)
+            aux_questao.clear()
+            cont = -1
+        cont += 1
+
+    # Insere a última questão da lista
+    nova_questao = Questao(aux_questao[0], aux_questao[1], aux_questao[2], aux_questao[3], aux_questao[4:9], 1, Questao.indice_questoes, True)
+    Questao.questoes.append(nova_questao)
+    Questao.quantidade_questoes += 1
+    Questao.indice_questoes += 1
