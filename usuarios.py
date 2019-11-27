@@ -39,10 +39,8 @@ Usuario.usuarios.append(admin)
 Professor.indice_atual_professores += 1
 Professor.professores.append(admin)
 
-
 aluno = Aluno(0, 'Eduardo', 'UFAL', 15, 'eduardo', '123', Aluno.indice_atual_alunos + 1001, admin.id_usuario, True)
 Usuario.quantidade_usuarios += 1
 Usuario.usuarios.append(aluno)
 Aluno.indice_atual_alunos += 1
 Aluno.alunos.append(aluno)
-

@@ -5,7 +5,6 @@ def cabecalho():
 
 
 def banco_professor():
-    # print('O usuário é professor!')
     print('''Bem-vindo, professor!
 1 - Adicionar Professor
 2 - Alunos

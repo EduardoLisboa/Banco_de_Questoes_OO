@@ -409,7 +409,72 @@ def editar_perfil_aluno(prof, id_usuario_online):
 def gerar_simulado(prof, id_usuario_online):
     limpar_tela()
     print('Gerar Simulado')
+    print('Quais matérias colocar no simulado?')
+    print('(Separe com um espaço simples. Ex.: 1 2 4)')
+    for index, materia in enumerate(Questao.materias, start=1):
+        print(f'{index} - {materia}')
+    opcoes = str(input('--> '))
+    opcoes = opcoes.split(' ')
+    print('\nMatérias escolhidas:')
+    qtd_questoes = []
+    materias_escolhidas = []
+    for index, opcao in enumerate(opcoes, start=1):
+        print(f'{index} - {Questao.materias[int(opcao) - 1]}')
+        materias_escolhidas.append(Questao.materias[int(opcao) - 1])
+        maximo = 0
+        for questao in Questao.questoes:
+            if Questao.materias[int(opcao) - 1] == questao.materia: maximo += 1
+        qtd_questoes.append(int(input(f'Quantidade de questões: (Max = {maximo}) ')))
+        print()
+    print(f'Total de questões: {sum(qtd_questoes)}')
+
+    questoes_materias_escolhidas = []
+    for questao in Questao.questoes:
+        if questao.materia in materias_escolhidas:
+            questoes_materias_escolhidas.append(questao)
+
+    escolhidas = []
+    indice = randint(0, len(questoes_materias_escolhidas) - 1)
+    for index, qtd in enumerate(qtd_questoes):
+        while qtd > 0:
+            if questoes_materias_escolhidas[indice] not in escolhidas and questoes_materias_escolhidas[indice].materia == materias_escolhidas[index]:
+                escolhidas.append(questoes_materias_escolhidas[indice])
+                qtd -= 1
+            else:
+                indice = randint(0, len(questoes_materias_escolhidas) - 1)
+    shuffle(escolhidas)
+    gabarito = []
+    for escolhida in escolhidas:
+        gabarito.append(escolhida.resposta)
+
+    limpar_tela()
+    letras = ['a) ', 'b) ', 'c) ', 'd) ', 'e) ']
+    dict_resposta = {'a' : 0, 'b' : 1, 'c' : 2, 'd' : 3, 'e' : 4}
+    respostas = []
+    for index, questao in enumerate(escolhidas, start=1):
+        print(f'{index} {questao.texto}')
+        shuffle(questao.alternativas)
+        for index2, alternativa in enumerate(questao.alternativas):
+            print(f'{letras[index2]}{alternativa}')
+        resp = str(input('\nResposta (letra): ')).lower()
+        if questao.alternativas[dict_resposta[resp]] == questao.resposta:
+            respostas.append(1)
+        else:
+            respostas.append(0)
+        print()
+    
+    print('\n-=-=-=-=-=- RESULTADOS -=-=-=-=-=-\n')
+    nota = (10 * sum(respostas)) / len(escolhidas)
+    acertos = respostas.count(1)
+    print(f'\nVocê acertou {acertos} questão' if acertos == 1 else f'\nVocê acertou {acertos} questões')
+    print(f'Sua nota foi: {nota:.2f} de 10')
+
+    print('\nRespostas:\n')
+    for index, questao in enumerate(escolhidas, start=1):
+        print(f'{index} {questao.resposta}')
+
     input()
+    banco_de_questoes(prof, id_usuario_online)
 
 
 def retornar(prof, id_usuario_online):
