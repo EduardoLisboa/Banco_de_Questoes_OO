@@ -41,4 +41,4 @@ Func. | Título da funcionalidade | Breve Descrição
 - [X] REMOVER QUESTÃO
 - [X] EXIBIR QUESTÕES
 - [X] GERAR PROVA
-- [ ] GERAR SIMULADO
+- [X] GERAR SIMULADO
