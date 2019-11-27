@@ -337,6 +337,7 @@ def gerar_prova(prof, id_usuario_online):
 
     print('\nProva e gabaritos gerados com sucesso!\n')
     input()
+    banco_de_questoes(prof, id_usuario_online)
 
 
 def sair(prof, id_usuario_online):
