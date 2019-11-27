@@ -1,5 +1,5 @@
 from os import system
-from random import randint
+from random import randint, shuffle
 from getpass import getpass
 from hashing import hashing
 from usuarios import Usuario, Professor, Aluno
@@ -287,24 +287,71 @@ def remover_questao(prof, id_usuario_online):
 def gerar_prova(prof, id_usuario_online):
     limpar_tela()
     print('Gerar Prova')
+    print('Quais matérias colocar na prova?')
+    print('(Separe com um espaço simples. Ex.: 1 2 4)')
+    for index, materia in enumerate(Questao.materias, start=1):
+        print(f'{index} - {materia}')
+    opcoes = str(input('--> '))
+    opcoes = opcoes.split(' ')
+    print('\nMatérias escolhidas:')
+    qtd_questoes = []
+    materias_escolhidas = []
+    for index, opcao in enumerate(opcoes, start=1):
+        print(f'{index} - {Questao.materias[int(opcao) - 1]}')
+        materias_escolhidas.append(Questao.materias[int(opcao) - 1])
+        maximo = 0
+        for questao in Questao.questoes:
+            if Questao.materias[int(opcao) - 1] == questao.materia: maximo += 1
+        qtd_questoes.append(int(input(f'Quantidade de questões: (Max = {maximo}) ')))
+        print()
+    print(f'Total de questões: {sum(qtd_questoes)}')
+
+    questoes_materias_escolhidas = []
+    for questao in Questao.questoes:
+        if questao.materia in materias_escolhidas:
+            questoes_materias_escolhidas.append(questao)
+
+    escolhidas = []
+    indice = randint(0, len(questoes_materias_escolhidas) - 1)
+    for index, qtd in enumerate(qtd_questoes):
+        while qtd > 0:
+            if questoes_materias_escolhidas[indice] not in escolhidas and questoes_materias_escolhidas[indice].materia == materias_escolhidas[index]:
+                escolhidas.append(questoes_materias_escolhidas[indice])
+                qtd -= 1
+            else:
+                indice = randint(0, len(questoes_materias_escolhidas) - 1)
+
+    shuffle(escolhidas)
+    letras = ['a) ', 'b) ', 'c) ', 'd) ', 'e) ']
+    prova = open('prova.txt', 'w', encoding='utf-8')
+    gabarito = open('gabarito.txt', 'w', encoding='utf-8')
+    for index, questao in enumerate(escolhidas, start=1):
+        prova.write(f'{index} {questao.texto}\n')
+        gabarito.write(f'{index} {questao.resposta}\n')
+        shuffle(questao.alternativas)
+        for index2, alternativa in enumerate(questao.alternativas):
+            prova.write(f'{letras[index2]}{alternativa}\n')
+        prova.write('\n')
+    prova.close()
+    gabarito.close()
+
+    print('\nProva e gabaritos gerados com sucesso!\n')
     input()
 
 
 def sair(prof, id_usuario_online):
     login.login()
-    exit()
 
 
 def encerrar(prof, id_usuario_online):
     limpar_tela()
     print('\nAté logo!\n')
     input()
-    exit()
 
 
 def editar_perfil_aluno(prof, id_usuario_online):
     limpar_tela()
-    # print('Editar Perfil Aluno!')
+    print('Editar Perfil Aluno')
     aluno = Aluno.alunos[id_usuario_online - 1001]
     print(f'1 - Nome: {aluno.nome}')
     print(f'2 - Instituição: {aluno.instituicao}')
@@ -360,7 +407,7 @@ def editar_perfil_aluno(prof, id_usuario_online):
 
 def gerar_simulado(prof, id_usuario_online):
     limpar_tela()
-    print('Gerar Simulado!')
+    print('Gerar Simulado')
     input()
 
 
