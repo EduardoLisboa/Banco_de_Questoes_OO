@@ -413,6 +413,7 @@ def gerar_simulado(prof, id_usuario_online):
         qtd_questoes.append(int(input(f'Quantidade de questões: (Max = {maximo}) ')))
         print()
     print(f'Total de questões: {sum(qtd_questoes)}')
+    input()
 
     questoes_materias_escolhidas = []
     for questao in Questao.questoes:
@@ -452,7 +453,7 @@ def gerar_simulado(prof, id_usuario_online):
     print('\n-=-=-=-=-=- RESULTADOS -=-=-=-=-=-\n')
     nota = (10 * sum(respostas)) / len(escolhidas)
     acertos = respostas.count(1)
-    print(f'\nVocê acertou {acertos} questão' if acertos == 1 else f'\nVocê acertou {acertos} questões')
+    print(f'\nVocê acertou {acertos} questão de {len(escolhidas)}' if acertos == 1 else f'\nVocê acertou {acertos} questões de {len(escolhidas)}')
     print(f'Sua nota foi: {nota:.2f} de 10')
 
     print('\nRespostas:\n')
