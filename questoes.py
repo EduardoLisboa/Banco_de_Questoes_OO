@@ -13,6 +13,24 @@ class Questao():
         self.id_professor = id_professor
         self.id_questao = id_questao
         self.ativa = ativa
+    
+
+    @staticmethod
+    def adicionar_questao(id_usuario_online):    
+        print('Adicionar Questão')
+        materia = str(input('Matéria: '))
+        palavra_chave = str(input('Assunto: '))
+        texto = str(input('Texto: '))
+        resposta = str(input('Resposta: '))
+        alternativas = [str(input(f'Alternativa {i}: ')) for i in range(1, 5)]
+        alternativas.append(resposta)
+        nova_questao = Questao(materia, palavra_chave, texto, resposta, alternativas, id_usuario_online, Questao.indice_questoes, True)
+        Questao.questoes.append(nova_questao)
+        Questao.quantidade_questoes += 1
+        Questao.indice_questoes += 1
+        if materia not in Questao.materias: Questao.materias.append(materia)
+        print('\nQuestão adicionada com sucesso!\n')
+        input()
 
 
 def atualizar_questoes():
