@@ -1,21 +1,27 @@
 from getpass import getpass
 from hashing import hashing
 
-class Usuario():
+class TodosUsuarios():
     usuarios = []
     quantidade_usuarios = 0
 
-    def __init__(self, is_prof, nome, instituicao, login, senha, id_usuario, ativo):
-        self.is_prof = is_prof
-        self.nome = nome
-        self.instituicao = instituicao
-        self.login = login
-        self.senha = hashing(senha)
-        self.id_usuario = id_usuario
-        self.ativo = ativo
+# Interface
+# Porque todos os métodos foram  obrigatoriamente implementados
+class Usuario():
     
-    def remover(self):
-        self.ativo = False
+    @staticmethod
+    def remover():
+        pass
+
+    @staticmethod
+    def listar():
+        print('Listar Usuários')
+        for usuario in TodosUsuarios.usuarios:
+            if usuario.ativo:
+                print(f'ID: {usuario.id_usuario}')
+                print(f'Nome: {usuario.nome.title()}')
+                print(f'Instituição: {usuario.instituicao.title()}\n')
+        input()
 
 
 class Professor(Usuario):
@@ -23,8 +29,18 @@ class Professor(Usuario):
     indice_atual_professores = 0
 
     def __init__(self, is_prof, nome, instituicao, materia, login, senha, id_usuario, ativo):
-        super().__init__(is_prof, nome, instituicao, login, senha, id_usuario, ativo)
+        self.is_prof = is_prof
+        self.nome = nome
+        self.instituicao = instituicao
+        self.login = login
+        self.senha = hashing(senha)
+        self.id_usuario = id_usuario
+        self.ativo = ativo
         self.materia = materia
+
+    
+    def remover(self):
+        self.ativo = False
 
 
     @staticmethod
@@ -39,8 +55,8 @@ class Professor(Usuario):
 
         Professor.indice_atual_professores += 1
         Professor.professores.append(novo_prof)
-        Usuario.quantidade_usuarios += 1
-        Usuario.usuarios.append(novo_prof)
+        TodosUsuarios.quantidade_usuarios += 1
+        TodosUsuarios.usuarios.append(novo_prof)
 
         print('\nProfessor cadastrado com sucesso!\n')
         input()
@@ -51,13 +67,23 @@ class Aluno(Usuario):
     indice_atual_alunos = 0
 
     def __init__(self, is_prof, nome, instituicao, idade, login, senha, id_usuario, id_professor, ativo):
-        super().__init__(is_prof, nome, instituicao, login, senha, id_usuario, ativo)
+        self.is_prof = is_prof
+        self.nome = nome
+        self.instituicao = instituicao
+        self.login = login
+        self.senha = hashing(senha)
+        self.id_usuario = id_usuario
+        self.ativo = ativo
         self.idade = idade
         self.id_professor = id_professor
 
 
+    def remover(self):
+        self.ativo = False
+
+
     @staticmethod
-    def listar_alunos():
+    def listar():
         print('Listar Alunos')
         for aluno in Aluno.alunos:
             if aluno.ativo:
@@ -81,21 +107,21 @@ class Aluno(Usuario):
         
         Aluno.indice_atual_alunos += 1
         Aluno.alunos.append(novo_aluno)
-        Usuario.quantidade_usuarios += 1
-        Usuario.usuarios.append(novo_aluno)
+        TodosUsuarios.quantidade_usuarios += 1
+        TodosUsuarios.usuarios.append(novo_aluno)
 
         print('\nAluno cadastrado com sucesso!\n')
         input()
 
 
 admin = Professor(1, 'admin', 'admin', 'todas', 'admin', 'admin', Professor.indice_atual_professores + 1, True)
-Usuario.quantidade_usuarios += 1
-Usuario.usuarios.append(admin)
+TodosUsuarios.quantidade_usuarios += 1
+TodosUsuarios.usuarios.append(admin)
 Professor.indice_atual_professores += 1
 Professor.professores.append(admin)
 
 aluno = Aluno(0, 'Eduardo Lisboa', 'UFAL', 24, 'eduardo', '123', Aluno.indice_atual_alunos + 1001, admin.id_usuario, True)
-Usuario.quantidade_usuarios += 1
-Usuario.usuarios.append(aluno)
+TodosUsuarios.quantidade_usuarios += 1
+TodosUsuarios.usuarios.append(aluno)
 Aluno.indice_atual_alunos += 1
 Aluno.alunos.append(aluno)

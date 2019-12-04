@@ -8,11 +8,12 @@ def banco_professor():
     print('''Bem-vindo, professor!
 1 - Adicionar Professor
 2 - Alunos
-3 - Editar Perfil
-4 - Questões
-5 - Gerar Prova
-6 - Sair
-7 - Encerrar
+3 - Listar usuários
+4 - Editar Perfil
+5 - Questões
+6 - Gerar Prova
+7 - Sair
+8 - Encerrar
 --> ''', end='')
 
 

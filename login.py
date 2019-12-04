@@ -1,7 +1,7 @@
 from getpass import getpass
 from os import system
 from hashing import hashing
-from usuarios import Usuario
+from usuarios import TodosUsuarios
 from questoes import Questao, atualizar_questoes
 from banco_de_questoes import banco_de_questoes, limpar_tela
 
@@ -9,7 +9,7 @@ from banco_de_questoes import banco_de_questoes, limpar_tela
 usuarios_dict = dict()
 def ler_usuarios():
     usuarios_dict.clear()
-    for usuario in Usuario.usuarios:
+    for usuario in TodosUsuarios.usuarios:
         if usuario.ativo:
             usuarios_dict[usuario.login] = [usuario.senha, usuario.is_prof, usuario.id_usuario]
 

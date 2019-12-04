@@ -112,10 +112,17 @@ def editar_perfil_professor(prof, id_usuario_online):
             professor.ativo = False
             print('\nConta excluída com sucesso!')
             input()
+            login.login()
     elif opc == 7:
         banco_de_questoes(prof, id_usuario_online)
     
     editar_perfil_professor(prof, id_usuario_online)
+
+
+def listar_usuarios(prof, id_usuario_online):
+    limpar_tela()
+    Usuario.listar()
+    banco_de_questoes(prof, id_usuario_online)
 
 
 # ------------------------------------------------------------------------ #
@@ -131,9 +138,9 @@ def alunos(prof, id_usuario_online):
     funcoes_prof_aluno[opc - 1](prof, id_usuario_online)
 
 
-def listar_alunos(prof, id_usuario_online):
+def listar(prof, id_usuario_online):
     limpar_tela()
-    Aluno.listar_alunos()
+    Aluno.listar()
     banco_de_questoes(prof, id_usuario_online)
 
 
@@ -471,11 +478,11 @@ def gerar_simulado(prof, id_usuario_online):
 # ------------------------------------------------------------------------ #
 
 
-funcoes_professor = [adicionar_professor, alunos, editar_perfil_professor,
+funcoes_professor = [adicionar_professor, alunos, listar_usuarios, editar_perfil_professor,
                     questoes, gerar_prova, sair, encerrar]
 
 funcoes_aluno = [editar_perfil_aluno, exibir_questoes, gerar_simulado, sair, encerrar]
 
 funcoes_questoes = [exibir_questoes, adicionar_questao, remover_questao, retornar]
 
-funcoes_prof_aluno = [listar_alunos, adicionar_aluno, remover_aluno, retornar]
+funcoes_prof_aluno = [listar, adicionar_aluno, remover_aluno, retornar]
